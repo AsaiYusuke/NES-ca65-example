@@ -1,0 +1,21 @@
+name: Make example
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  make:
+    name: Make
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out
+      uses: actions/checkout@v3
+
+    - name: Install dependent commands
+      run: sudo apt-get install cc65
+
+    - name: Build
+      run: make
