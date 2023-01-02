@@ -1,0 +1,239 @@
+{
+    "$schema": "../../6502_test_executor/schema/testcase.schema.json",
+    "target": {
+        "start": {
+            "label": "snap_cursor"
+        }
+    },
+    "definitions": {
+        "templates": {
+            "setup": {
+                "cursor_x:$F3": {
+                    "memory": [
+                        {
+                            "label": "cursor_x",
+                            "value": "$F3"
+                        }
+                    ]
+                },
+                "cursor_x:$F4": {
+                    "memory": [
+                        {
+                            "label": "cursor_x",
+                            "value": "$F4"
+                        }
+                    ]
+                },
+                "cursor_x:$FB": {
+                    "memory": [
+                        {
+                            "label": "cursor_x",
+                            "value": "$FB"
+                        }
+                    ]
+                },
+                "cursor_x:$FC": {
+                    "memory": [
+                        {
+                            "label": "cursor_x",
+                            "value": "$FC"
+                        }
+                    ]
+                },
+                "cursor_y:$EB": {
+                    "memory": [
+                        {
+                            "label": "cursor_y",
+                            "value": "$EB"
+                        }
+                    ]
+                },
+                "cursor_y:$EC": {
+                    "memory": [
+                        {
+                            "label": "cursor_y",
+                            "value": "$EC"
+                        }
+                    ]
+                },
+                "cursor_y:$ED": {
+                    "memory": [
+                        {
+                            "label": "cursor_y",
+                            "value": "$ED"
+                        }
+                    ]
+                }
+            },
+            "expected": {
+                "register_count_XY:0": {
+                    "register": {
+                        "X": {
+                            "readCount": {
+                                "eq": 0
+                            },
+                            "writeCount": {
+                                "eq": 0
+                            }
+                        },
+                        "Y": {
+                            "readCount": {
+                                "eq": 0
+                            },
+                            "writeCount": {
+                                "eq": 0
+                            }
+                        }
+                    }
+                },
+                "cursor_x:$00": {
+                    "memory": [
+                        {
+                            "label": "cursor_x",
+                            "value": {
+                                "eq": "$00"
+                            }
+                        }
+                    ]
+                },
+                "cursor_x:$F0": {
+                    "memory": [
+                        {
+                            "label": "cursor_x",
+                            "value": {
+                                "eq": "$F0"
+                            }
+                        }
+                    ]
+                },
+                "cursor_x:$F8": {
+                    "memory": [
+                        {
+                            "label": "cursor_x",
+                            "value": {
+                                "eq": "$F8"
+                            }
+                        }
+                    ]
+                },
+                "cursor_y:$E8": {
+                    "memory": [
+                        {
+                            "label": "cursor_y",
+                            "value": {
+                                "eq": "$E8"
+                            }
+                        }
+                    ]
+                },
+                "cursor_y:$00": {
+                    "memory": [
+                        {
+                            "label": "cursor_y",
+                            "value": {
+                                "eq": "$00"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "cases": {
+        "cursor_x/": {
+            "F3 -> F0": {
+                "setup": {
+                    "template": [
+                        "@cursor_x:$F3"
+                    ]
+                },
+                "expected": {
+                    "template": [
+                        "@register_count_XY:0",
+                        "@cursor_x:$F0"
+                    ]
+                }
+            },
+            "F4 -> F8": {
+                "setup": {
+                    "template": [
+                        "@cursor_x:$F4"
+                    ]
+                },
+                "expected": {
+                    "template": [
+                        "@register_count_XY:0",
+                        "@cursor_x:$F8"
+                    ]
+                }
+            },
+            "FB -> F8": {
+                "setup": {
+                    "template": [
+                        "@cursor_x:$FB"
+                    ]
+                },
+                "expected": {
+                    "template": [
+                        "@register_count_XY:0",
+                        "@cursor_x:$F8"
+                    ]
+                }
+            },
+            "FC -> 00": {
+                "setup": {
+                    "template": [
+                        "@cursor_x:$FC"
+                    ]
+                },
+                "expected": {
+                    "template": [
+                        "@register_count_XY:0",
+                        "@cursor_x:$00"
+                    ]
+                }
+            }
+        },
+        "cursor_y/": {
+            "EB(239) -> E8": {
+                "setup": {
+                    "template": [
+                        "@cursor_y:$EB"
+                    ]
+                },
+                "expected": {
+                    "template": [
+                        "@register_count_XY:0",
+                        "@cursor_y:$E8"
+                    ]
+                }
+            },
+            "EC(240) -> 00": {
+                "setup": {
+                    "template": [
+                        "@cursor_y:$EC"
+                    ]
+                },
+                "expected": {
+                    "template": [
+                        "@register_count_XY:0",
+                        "@cursor_y:$00"
+                    ]
+                }
+            },
+            "ED(241) -> 00": {
+                "setup": {
+                    "template": [
+                        "@cursor_y:$ED"
+                    ]
+                },
+                "expected": {
+                    "template": [
+                        "@register_count_XY:0",
+                        "@cursor_y:$00"
+                    ]
+                }
+            }
+         }
+    }
+}
