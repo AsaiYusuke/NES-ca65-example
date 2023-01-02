@@ -1,5 +1,5 @@
 {
-    "$schema": "../../6502_test_executor/schema/testcase.schema.json",
+    "$schema": "https://raw.githubusercontent.com/AsaiYusuke/6502_test_executor/master/schema/testcase.schema.json",
     "target": {
         "start": {
             "label": "snap_cursor"
