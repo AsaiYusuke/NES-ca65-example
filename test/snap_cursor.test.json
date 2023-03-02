@@ -139,7 +139,7 @@
             }
         }
     },
-    "cases": {
+    "testCases": {
         "cursor_x/": {
             "F3 -> F0": {
                 "setup": {
